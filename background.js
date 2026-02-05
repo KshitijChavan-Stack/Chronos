@@ -2,7 +2,6 @@ let tabTimeData = {};
 let currentActiveTab = null;
 let lastUpdateTime = Date.now();
 
-<<<<<<< HEAD
 const STORAGE_KEYS = {
   tabTimeData: 'tabTimeData',
   lastResetDay: 'lastResetDay',
@@ -296,21 +295,12 @@ chrome.alarms.onAlarm.addListener((alarm) => {
     // Clear once we cross into the new calendar day, then schedule the next midnight.
     clearAllTrackingData();
     scheduleMidnightResetAlarm();
-=======
-// Load data from storage on startup
-chrome.storage.local.get(['tabTimeData'], (result) => {
-  if (result.tabTimeData) {
-    tabTimeData = result.tabTimeData;
->>>>>>> a161444610f323a0e0bb20943faf6f4b6ae999d6
   }
 });
 
 // Track active tab changes
 chrome.tabs.onActivated.addListener((activeInfo) => {
-<<<<<<< HEAD
   ensureMidnightReset();
-=======
->>>>>>> a161444610f323a0e0bb20943faf6f4b6ae999d6
   const tabId = activeInfo.tabId;
   
   // Update time for previously active tab
@@ -332,10 +322,7 @@ chrome.tabs.onActivated.addListener((activeInfo) => {
 
 // Track when tab is closed
 chrome.tabs.onRemoved.addListener((tabId) => {
-<<<<<<< HEAD
   ensureMidnightReset();
-=======
->>>>>>> a161444610f323a0e0bb20943faf6f4b6ae999d6
   if (currentActiveTab === tabId) {
     updateTabTime(tabId);
     currentActiveTab = null;
@@ -357,11 +344,7 @@ function updateTabTime(tabId) {
         tabTimeData[domain].url = tab.url;
         
         // Save to storage
-<<<<<<< HEAD
         chrome.storage.local.set({ [STORAGE_KEYS.tabTimeData]: tabTimeData });
-=======
-        chrome.storage.local.set({ tabTimeData });
->>>>>>> a161444610f323a0e0bb20943faf6f4b6ae999d6
       }
     }
   });
@@ -383,10 +366,7 @@ function isValidUrl(url) {
 
 // Update active tab time every second
 setInterval(() => {
-<<<<<<< HEAD
   ensureMidnightReset();
-=======
->>>>>>> a161444610f323a0e0bb20943faf6f4b6ae999d6
   if (currentActiveTab !== null) {
     chrome.tabs.get(currentActiveTab, (tab) => {
       if (tab && tab.url && isValidUrl(tab.url)) {
@@ -400,7 +380,6 @@ setInterval(() => {
           tabTimeData[domain].time += timeSpent;
           
           // Save to storage
-<<<<<<< HEAD
           chrome.storage.local.set({ [STORAGE_KEYS.tabTimeData]: tabTimeData });
 
           // Enforce limits (domain or URL-prefix). We use current URL and domain's accumulated time.
@@ -419,9 +398,6 @@ setInterval(() => {
               }
             }
           });
-=======
-          chrome.storage.local.set({ tabTimeData });
->>>>>>> a161444610f323a0e0bb20943faf6f4b6ae999d6
         }
       }
       lastUpdateTime = Date.now();
@@ -429,7 +405,6 @@ setInterval(() => {
   }
 }, 1000);
 
-<<<<<<< HEAD
 chrome.notifications.onButtonClicked.addListener((notificationId, buttonIndex) => {
   if (!notificationId || !notificationId.startsWith('limit:')) return;
   const id = notificationId.slice('limit:'.length);
@@ -454,17 +429,10 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === 'getData') {
     ensureMidnightReset();
     chrome.storage.local.get([STORAGE_KEYS.tabTimeData], (result) => {
-=======
-// Export function to get data (called by popup)
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  if (request.action === 'getData') {
-    chrome.storage.local.get(['tabTimeData'], (result) => {
->>>>>>> a161444610f323a0e0bb20943faf6f4b6ae999d6
       sendResponse({ data: result.tabTimeData || {} });
     });
     return true;
   } else if (request.action === 'clearData') {
-<<<<<<< HEAD
     clearAllTrackingData();
     sendResponse({ success: true });
   } else if (request.action === 'limitsUpdated') {
@@ -488,10 +456,6 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     if (sender && sender.tab && sender.tab.id) {
       chrome.tabs.remove(sender.tab.id);
     }
-=======
-    tabTimeData = {};
-    chrome.storage.local.set({ tabTimeData: {} });
->>>>>>> a161444610f323a0e0bb20943faf6f4b6ae999d6
     sendResponse({ success: true });
   }
 });
