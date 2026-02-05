@@ -5,13 +5,10 @@
 let currentChart = null;
 let allData = {};
 
-<<<<<<< HEAD
 const LIMITS_STORAGE_KEY = 'siteLimits';
 let limitsUnit = 'minutes'; // 'minutes' | 'hours'
 let editingLimitId = null;
 
-=======
->>>>>>> a161444610f323a0e0bb20943faf6f4b6ae999d6
 // Escape user-controlled data to prevent XSS
 function escapeHtml(str) {
   if (str == null) return '';
@@ -20,7 +17,6 @@ function escapeHtml(str) {
   return div.innerHTML;
 }
 
-<<<<<<< HEAD
 function normalizeUrlPrefix(u) {
   // Normalize for matching: include origin, keep pathname (trim trailing slash),
   // drop hash, keep query (since user might want exact pages with query).
@@ -66,8 +62,6 @@ function formatLimitSeconds(seconds) {
   return `${mins} min${mins === 1 ? '' : 's'}`;
 }
 
-=======
->>>>>>> a161444610f323a0e0bb20943faf6f4b6ae999d6
 // Format seconds to human-readable time
 function formatTime(seconds) {
   const hours = Math.floor(seconds / 3600);
@@ -106,7 +100,6 @@ function loadData() {
 }
 
 // -----------------------
-<<<<<<< HEAD
 // Limits: storage + rendering
 // -----------------------
 
@@ -314,8 +307,6 @@ function setActiveTab(tab) {
 }
 
 // -----------------------
-=======
->>>>>>> a161444610f323a0e0bb20943faf6f4b6ae999d6
 // View helpers
 // -----------------------
 
@@ -467,7 +458,7 @@ function updateChartView() {
           borderColor: '#3f4147',
           borderWidth: 1,
           callbacks: {
-            label: function(context) {
+            label: function (context) {
               return formatTime(context.parsed.x);
             }
           }
@@ -480,7 +471,7 @@ function updateChartView() {
           ticks: {
             color: '#9a9ca1',
             font: { size: 10 },
-            callback: function(value) {
+            callback: function (value) {
               return formatTime(value);
             }
           }
@@ -544,7 +535,6 @@ function clearData() {
 // -----------------------
 
 function initPopup() {
-<<<<<<< HEAD
   // Top-level tabs
   const tabStats = document.getElementById('tabStats');
   const tabLimits = document.getElementById('tabLimits');
@@ -574,8 +564,6 @@ function initPopup() {
   if (addLimit) addLimit.addEventListener('click', upsertLimitFromForm);
   if (cancelLimit) cancelLimit.addEventListener('click', resetLimitForm);
 
-=======
->>>>>>> a161444610f323a0e0bb20943faf6f4b6ae999d6
   const toggleButton = document.getElementById('btnToggle');
   const clearButton = document.getElementById('btnClear');
 
@@ -587,14 +575,10 @@ function initPopup() {
   }
 
   // Initial load
-<<<<<<< HEAD
   setActiveTab('stats');
   resetLimitForm();
   loadData();
   loadLimits();
-=======
-  loadData();
->>>>>>> a161444610f323a0e0bb20943faf6f4b6ae999d6
 
   // Refresh data every 5 seconds
   setInterval(loadData, 5000);

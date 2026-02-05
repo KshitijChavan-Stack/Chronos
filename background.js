@@ -302,15 +302,15 @@ chrome.alarms.onAlarm.addListener((alarm) => {
 chrome.tabs.onActivated.addListener((activeInfo) => {
   ensureMidnightReset();
   const tabId = activeInfo.tabId;
-  
+
   // Update time for previously active tab
   if (currentActiveTab !== null && currentActiveTab !== tabId) {
     updateTabTime(currentActiveTab);
   }
-  
+
   currentActiveTab = tabId;
   lastUpdateTime = Date.now();
-  
+
   // Get URL of newly active tab
   chrome.tabs.get(tabId, (tab) => {
     if (tab.url && isValidUrl(tab.url)) {
@@ -335,14 +335,14 @@ function updateTabTime(tabId) {
     if (tab && tab.url && isValidUrl(tab.url)) {
       const domain = new URL(tab.url).hostname;
       const timeSpent = Math.floor((Date.now() - lastUpdateTime) / 1000); // in seconds
-      
+
       if (domain) {
         if (!tabTimeData[domain]) {
           tabTimeData[domain] = { time: 0, url: tab.url, visits: 0 };
         }
         tabTimeData[domain].time += timeSpent;
         tabTimeData[domain].url = tab.url;
-        
+
         // Save to storage
         chrome.storage.local.set({ [STORAGE_KEYS.tabTimeData]: tabTimeData });
       }
@@ -372,13 +372,13 @@ setInterval(() => {
       if (tab && tab.url && isValidUrl(tab.url)) {
         const domain = new URL(tab.url).hostname;
         const timeSpent = Math.floor((Date.now() - lastUpdateTime) / 1000);
-        
+
         if (timeSpent > 0 && domain) {
           if (!tabTimeData[domain]) {
             tabTimeData[domain] = { time: 0, url: tab.url, visits: 0 };
           }
           tabTimeData[domain].time += timeSpent;
-          
+
           // Save to storage
           chrome.storage.local.set({ [STORAGE_KEYS.tabTimeData]: tabTimeData });
 

@@ -6,7 +6,6 @@
   "permissions": [
     "tabs",
     "storage",
-<<<<<<< HEAD
     "activeTab",
     "alarms",
     "notifications",
@@ -14,9 +13,6 @@
   ],
   "host_permissions": [
     "<all_urls>"
-=======
-    "activeTab"
->>>>>>> a161444610f323a0e0bb20943faf6f4b6ae999d6
   ],
   "background": {
     "service_worker": "background.js"

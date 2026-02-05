@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,15 +14,9 @@
         }
 
         body {
-<<<<<<< HEAD
             width: 360px;
             min-height: 320px;
             max-height: 540px;
-=======
-            width: 340px;
-            min-height: 320px;
-            max-height: 520px;
->>>>>>> a161444610f323a0e0bb20943faf6f4b6ae999d6
             font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
             background: #1a1b1e;
             color: #ffffff;
@@ -58,7 +53,6 @@
             gap: 8px;
         }
 
-<<<<<<< HEAD
         .tabs {
             display: flex;
             gap: 8px;
@@ -88,8 +82,6 @@
             gap: 8px;
         }
 
-=======
->>>>>>> a161444610f323a0e0bb20943faf6f4b6ae999d6
         button {
             padding: 8px 12px;
             border: 1px solid #3f4147;
@@ -133,7 +125,6 @@
             gap: 14px;
         }
 
-<<<<<<< HEAD
         .tab-panel {
             display: none;
             flex-direction: column;
@@ -144,8 +135,6 @@
             display: flex;
         }
 
-=======
->>>>>>> a161444610f323a0e0bb20943faf6f4b6ae999d6
         .section {
             display: none;
         }
@@ -270,7 +259,6 @@
             color: #9a9ca1;
             font-size: 12px;
         }
-<<<<<<< HEAD
 
         /* Limits UI */
         .limits-card {
@@ -308,7 +296,8 @@
             letter-spacing: 0.04em;
         }
 
-        input[type="text"], input[type="number"] {
+        input[type="text"],
+        input[type="number"] {
             padding: 9px 10px;
             border: 1px solid #3f4147;
             border-radius: 6px;
@@ -318,11 +307,13 @@
             outline: none;
         }
 
-        input[type="text"]::placeholder, input[type="number"]::placeholder {
+        input[type="text"]::placeholder,
+        input[type="number"]::placeholder {
             color: rgba(154, 156, 161, 0.7);
         }
 
-        input[type="text"]:focus, input[type="number"]:focus {
+        input[type="text"]:focus,
+        input[type="number"]:focus {
             border-color: #9a9ca1;
             box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.08);
         }
@@ -445,33 +436,30 @@
             padding: 6px 10px;
             font-size: 11px;
         }
-=======
->>>>>>> a161444610f323a0e0bb20943faf6f4b6ae999d6
     </style>
 </head>
+
 <body>
     <div class="container">
         <header class="header">
             <h1>Chronos</h1>
             <div class="header-buttons">
-<<<<<<< HEAD
                 <div class="tabs" role="tablist" aria-label="Chronos sections">
-                    <button type="button" class="tab active" id="tabStats" role="tab" aria-selected="true" aria-controls="statsTab">Stats</button>
-                    <button type="button" class="tab" id="tabLimits" role="tab" aria-selected="false" aria-controls="limitsTab">Limits</button>
+                    <button type="button" class="tab active" id="tabStats" role="tab" aria-selected="true"
+                        aria-controls="statsTab">Stats</button>
+                    <button type="button" class="tab" id="tabLimits" role="tab" aria-selected="false"
+                        aria-controls="limitsTab">Limits</button>
                 </div>
                 <div class="header-actions">
-                    <button type="button" class="btn-toggle" id="btnToggle" aria-label="Toggle between table and chart view">Toggle view</button>
-                    <button type="button" class="btn-clear" id="btnClear" aria-label="Clear all browsing data">Clear data</button>
+                    <button type="button" class="btn-toggle" id="btnToggle"
+                        aria-label="Toggle between table and chart view">Toggle view</button>
+                    <button type="button" class="btn-clear" id="btnClear" aria-label="Clear all browsing data">Clear
+                        data</button>
                 </div>
-=======
-                <button type="button" class="btn-toggle" id="btnToggle" aria-label="Toggle between table and chart view">Toggle view</button>
-                <button type="button" class="btn-clear" id="btnClear" aria-label="Clear all browsing data">Clear data</button>
->>>>>>> a161444610f323a0e0bb20943faf6f4b6ae999d6
             </div>
         </header>
 
         <main class="content">
-<<<<<<< HEAD
             <section id="statsTab" class="tab-panel active" role="tabpanel" aria-labelledby="tabStats">
                 <section id="tableView" class="section active" aria-label="Browsing time by website">
                     <div class="stats-summary" id="statsSummary" role="status" aria-live="polite"></div>
@@ -508,7 +496,8 @@
                     <div class="limits-form">
                         <label class="field">
                             <span class="label">Website URL</span>
-                            <input id="limitUrl" type="text" placeholder="example.com (domain) or https://example.com/path (URL)" />
+                            <input id="limitUrl" type="text"
+                                placeholder="example.com (domain) or https://example.com/path (URL)" />
                         </label>
 
                         <div class="row">
@@ -519,7 +508,8 @@
                             <div class="field" style="width: 120px;">
                                 <span class="label">Unit</span>
                                 <div class="segmented" role="group" aria-label="Time unit">
-                                    <button type="button" class="seg active" id="unitMinutes" aria-pressed="true">Min</button>
+                                    <button type="button" class="seg active" id="unitMinutes"
+                                        aria-pressed="true">Min</button>
                                     <button type="button" class="seg" id="unitHours" aria-pressed="false">Hrs</button>
                                 </div>
                             </div>
@@ -548,33 +538,6 @@
                     <div class="limits-list" id="limitsList">
                         <div class="loading">Loading…</div>
                     </div>
-=======
-            <section id="tableView" class="section active" aria-label="Browsing time by website">
-                <div class="stats-summary" id="statsSummary" role="status" aria-live="polite"></div>
-                <div class="table-container">
-                    <table id="timeTable">
-                        <thead>
-                            <tr>
-                                <th scope="col">Website</th>
-                                <th scope="col">Time</th>
-                                <th scope="col">Visits</th>
-                                <th scope="col">Avg</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tableBody">
-                            <tr>
-                                <td colspan="4" class="loading">Loading…</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </section>
-
-            <section id="chartView" class="section" aria-label="Top 10 sites bar chart">
-                <div class="stats-summary" id="statsChartSummary" role="status" aria-live="polite"></div>
-                <div class="chart-container">
-                    <canvas id="timeChart" role="img" aria-label="Bar chart of time spent per website"></canvas>
->>>>>>> a161444610f323a0e0bb20943faf6f4b6ae999d6
                 </div>
             </section>
         </main>
@@ -582,4 +545,5 @@
 
     <script src="popup.js"></script>
 </body>
+
 </html>
